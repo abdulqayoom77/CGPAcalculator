@@ -1,29 +1,28 @@
+import { Card, Button } from "antd";
+import { useCGPA } from "./hooks/useCGPA";
+import { PlusOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import Step1 from "./components/Step1";
+import SemesterFormModal from "./components/SemesterFormModal";
+import EditSemester from "./components/EditSemester";
+import SemesterList from "./components/SemesterList";
 
 const App = () => {
-  
-
-  
-
-  const [gpa, setGpa] = useState(null);
-  const getGradingScale = (marks: any) => {
-    if (marks >= 85) return { grade: "A", point: 4.0 };
-    if (marks >= 80) return { grade: "A−", point: 3.7 };
-    if (marks >= 75) return { grade: "B+", point: 3.3 };
-    if (marks >= 70) return { grade: "B", point: 3.0 };
-    if (marks >= 65) return { grade: "B−", point: 2.7 };
-    if (marks >= 60) return { grade: "C+", point: 2.3 };
-    if (marks >= 55) return { grade: "C", point: 2.0 };
-    if (marks >= 50) return { grade: "C−", point: 1.7 };
-    if (marks >= 45) return { grade: "D", point: 1.3 };
-    if (marks >= 40) return { grade: "D−", point: 1.0 };
-    return { grade: "F", point: 0.0 };
-  };
+  const { state } = useCGPA();
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div>
-      <Step1></Step1>
+    <div style={{ padding: 24 }}>
+      {!state.editMode && (
+        <Card>
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => setModalOpen(true)}
+          ></Button>
+        </Card>
+      )}
+      <SemesterFormModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      {state.editMode ? <EditSemester /> : <SemesterList />}
     </div>
   );
 };
