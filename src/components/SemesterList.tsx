@@ -7,7 +7,7 @@ const SemesterList = () => {
 
   return (
     <Space>
-      <Typography.Title level={3} style={{ color: "white" }}>
+      <Typography.Title level={3} style={{ marginTop: "20px" }}>
         Your Semesters
       </Typography.Title>
 

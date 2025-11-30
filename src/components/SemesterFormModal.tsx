@@ -1,11 +1,6 @@
 import { Button, Form, Input, InputNumber, Modal } from "antd";
 import { useCGPA } from "../hooks/useCGPA";
-import { GPAActionType } from "../types/types";
-
-type ModalProps = {
-  open: boolean;
-  onClose: () => void;
-};
+import { GPAActionType, type ModalProps } from "../types/types";
 
 const SemesterFormModal = ({ open, onClose }: ModalProps) => {
   const { dispatch } = useCGPA();

@@ -18,7 +18,7 @@ const App = () => {
             type="primary"
             icon={<PlusOutlined />}
             onClick={() => setModalOpen(true)}
-          ></Button>
+          >Add Semester</Button>
         </Card>
       )}
       <SemesterFormModal open={modalOpen} onClose={() => setModalOpen(false)} />

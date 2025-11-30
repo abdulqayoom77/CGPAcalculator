@@ -16,6 +16,7 @@ export type GPAState = {
   currentSemester: Semester | null;
   editMode: boolean;
 };
+
 export enum GPAActionType {
   ADD_SEMESTER = "ADD_SEMESTER",
   SET_CURRENT = "SET_CURRENT",
@@ -32,4 +33,9 @@ export type GPAAction =
 export type GPAContextType = {
   state: GPAState;
   dispatch: React.Dispatch<GPAAction>;
+};
+
+export type ModalProps = {
+  open: boolean;
+  onClose: () => void;
 };
